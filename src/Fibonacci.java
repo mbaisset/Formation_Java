@@ -6,15 +6,14 @@ public class Fibonacci {
     public static void main(String[] args) {
 
         System.out.print("Donnez le nombre de la suite à calculer : ");
-        int number_suite = 0;
 
-        number_suite = scanner.nextInt();
+        int number_suite = scanner.nextInt();
         System.out.println();
+        System.out.println("La réponse est : " + fibonacci_recursive(number_suite));
         }
-    }
 
 
-    private int fibonacci_recursive (int number) {
+    private static int fibonacci_recursive (int number) {
         if (number == 0) {
             return 0;
         } else if (number == 1) {
