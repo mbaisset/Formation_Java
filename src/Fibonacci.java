@@ -9,8 +9,7 @@ public class Fibonacci {
 
         int number_suite = scanner.nextInt();
         System.out.println();
-        System.out.println("La réponse est : " + fibonacci_recursive(number_suite));
-        }
+        System.out.println("La réponse est : " + fibonacci_recursive(number_suite));        }
 
 
     private static int fibonacci_recursive (int number) {
