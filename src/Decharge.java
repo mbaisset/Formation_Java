@@ -10,15 +10,26 @@ public class Decharge {
 
 	   private static int[] troisPlusProches(int x, int y, int[] coordonneesHabitations) {
 		   int[] tPP = new int[3];
-		   tPP[0] = 0;
-		   tPP[1] = 1;
-		   tPP[2] = 2;
-		   return tPP;
+		   int[] troisPlusProchesTep = new int [6];
+
+		   int [] coordonneesHabitationsTemp = new int[coordonneesHabitations.length];
+		   System.arraycopy(coordonneesHabitations,0,coordonneesHabitationsTemp,0,coordonneesHabitations.length);
+
+		   for (int i = 0; i < 3; i++) {
+			   int lePlusProche = plusProche(x,y,coordonneesHabitationsTemp);
+			   tPP[i] = lePlusProche;
+			   troisPlusProchesTep[2*i] = coordonneesHabitations[2*lePlusProche];
+			   troisPlusProchesTep[2*i] = coordonneesHabitations[2*lePlusProche+1];
+			   coordonneesHabitationsTemp[lePlusProche*2] = 1000000;
+			   coordonneesHabitationsTemp[lePlusProche*2+1] = 1000000;
+		   }
+
+		   return troisPlusProchesTep;
 	   }
 
 		private static double calculerDistance(int x, int y, int i, int i1) {
-
-			return 0.0;
+			double distance = Math.sqrt(Math.pow((x-i),2.0) + Math.pow((y-i1), 2.0));
+			return distance;
 		}
 
 		private static int[] meilleurePlace(int x, int y, int[] coordonneesHabitations) {
@@ -30,8 +41,21 @@ public class Decharge {
 		}
 
 		private static int plusProche(int x, int y, int[] coordonneesHabitations) {
-			return 0;
+		   double distancePlusProche = calculerDistance(x,y,coordonneesHabitations[0], coordonneesHabitations[1]);
+		   int coordonneesPlusProche = 0;
+
+		   for (int i =2; i < coordonneesHabitations.length; i = i + 2){
+			   double distanceTemp = calculerDistance(x,y,coordonneesHabitations[i], coordonneesHabitations[i+1]);
+
+			   if ( distanceTemp < distancePlusProche) {
+				   distancePlusProche = distanceTemp;
+				   coordonneesPlusProche = i;
+			   }
+		   }
+
+		   return coordonneesPlusProche/2;
 		}
+
 
         /*******************************************
          * Ne rien modifier apres cette ligne.
@@ -67,8 +91,8 @@ public class Decharge {
 		System.out.println("--- Question 1 ---");
 		System.out.println("Coordonnees de l'habitation la plus proche de la decharge :");
 		System.out.println("(" + coordonneesHabitations[plusProche * 2] + "," + coordonneesHabitations[plusProche * 2 + 1] + ") ; distance = " +
-						   df.format(calculerDistance(x, y, coordonneesHabitations[plusProche * 2], coordonneesHabitations[plusProche * 2 + 1]))  + " metres");	
-			
+						   df.format(calculerDistance(x, y, coordonneesHabitations[plusProche * 2], coordonneesHabitations[plusProche * 2 + 1]))  + " metres");
+
 		// trouve les coordonnees des 3 habitations les plus proches et affiche les coordonnees
 		
 		System.out.println("--- Question 2 ---");
