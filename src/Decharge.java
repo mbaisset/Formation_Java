@@ -19,7 +19,7 @@ public class Decharge {
 			   int lePlusProche = plusProche(x,y,coordonneesHabitationsTemp);
 			   tPP[i] = lePlusProche;
 			   troisPlusProchesTep[2*i] = coordonneesHabitations[2*lePlusProche];
-			   troisPlusProchesTep[2*i] = coordonneesHabitations[2*lePlusProche+1];
+			   troisPlusProchesTep[2*i+1] = coordonneesHabitations[2*lePlusProche+1];
 			   coordonneesHabitationsTemp[lePlusProche*2] = 1000000;
 			   coordonneesHabitationsTemp[lePlusProche*2+1] = 1000000;
 		   }
@@ -33,10 +33,21 @@ public class Decharge {
 		}
 
 		private static int[] meilleurePlace(int x, int y, int[] coordonneesHabitations) {
-			int[] mP = new int[3];
+			int[] mP = new int[2];
 			mP[0] = 0;
-			mP[1] = 1;
-			mP[2] = 2;
+			mP[1] = 0;
+
+			int cx = 0;
+			int cy = 0;
+
+			for (int i = 0; i < 3; i++){
+				cx = cx + coordonneesHabitations[2*i];
+				cy = cy + coordonneesHabitations[2*i+1];
+			}
+
+			mP[0] = cx/3;
+			mP[1] = cy/3;
+
 			return mP;
 		}
 
