@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Paque {
+public class Paques {
     private final static Scanner CLAVIER = new Scanner(System.in);
 
     public static void main (String[] args) {
@@ -15,10 +15,10 @@ public class Paque {
         int annee = 0;
 
         while ((annee < 1583) || (annee > 4000)){
-            System.out.print("Entrez une annee (1583-4000): ");
+            System.out.println("Entrez une annee (1583-4000): ");
             annee = CLAVIER.nextInt();
         }
-        System.out.println(annee);
+        //System.out.println(annee);
         return annee;
     }
 
@@ -36,7 +36,7 @@ public class Paque {
             jour = pNbJours - 31;
         }
 
-        System.out.print("Date de Paques en " + pAnnee + ": " + jour + " " + mois);
+        System.out.print("Date de Paques en " + pAnnee + " : " + jour + " " + mois);
 
     }
 
