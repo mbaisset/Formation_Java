@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
 							  
-public class Decharge {
+public class Decharge2 {
 	private static DecimalFormat df = new DecimalFormat("#.000");
 	
        /*******************************************
